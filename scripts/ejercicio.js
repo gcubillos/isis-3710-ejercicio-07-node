@@ -91,6 +91,16 @@ axios.get(urlProveedores)
         console.warn(error);
     });
 
+    // Creación del servidor web
+let http = require('http');
+let rutas = require('./rutas')
+
+Promise.all(axios.get(urlClientes), axios.get(urlProveedores))
+{
+    let servidor = http.createServer(rutas);
+
+servidor.listen(8081);
+}
 
 
 
