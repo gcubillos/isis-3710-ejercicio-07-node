@@ -36,11 +36,11 @@ axios.get(urlClientes)
 
             let filaActual = jsonClientes[i];
             // Agrega idcliente
-            htmlClientes += "<td>" + filaActual.idcliente + "</td>";
+            htmlClientes += "<td>" + filaActual.idCliente + "</td>";
             // Agrega nombrecompania
-            htmlClientes += "<td>" + filaActual.nombrecompania + "</td>";
+            htmlClientes += "<td>" + filaActual.NombreCompania + "</td>";
             // Agrega nombrecontacto
-            htmlClientes += "<td>" + filaActual.nombrecontacto + "</td>";
+            htmlClientes += "<td>" + filaActual.NombreContacto + "</td>";
 
             // Cierra el tag de fila
             htmlClientes += "</tr>";

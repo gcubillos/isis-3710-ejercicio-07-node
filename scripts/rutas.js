@@ -6,7 +6,7 @@ let requestListener = (req, res) => {
   // No se utiliza el módulo url
   let url = req.url;
   if (url === "/api/proveedores") {
-    fs.readFile("../proveedores.html")
+    fs.readFile("./proveedores.html")
       .then(contents => {
         // Decir que se va a devolver un html
         res.setHeader("Content-Type", "text/html");
@@ -15,7 +15,7 @@ let requestListener = (req, res) => {
       })
   }
   else if (url === "/api/clientes") {
-    fs.readFile("../clientes.html")
+    fs.readFile("./clientes.html")
       .then(contents => {
         // Decir que se va a devolver un html
         res.setHeader("Content-Type", "text/html");
