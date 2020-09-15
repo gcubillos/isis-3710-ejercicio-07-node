@@ -25,7 +25,33 @@ let jsonProveedores = '';
 axios.get(urlClientes)
     .then(function (response) {
         jsonClientes = response.data
-        
+        // Agregar el Doctype normal con bootstrap y el título
+        htmlClientes += "<!DOCTYPE html><html lang=\"en \">  <head>    <meta charset=\"UTF-8 \" />    <meta name=\"viewport \" content=\"width=device-width, initial-scale=1.0 \" />    <!--Agrega Bootstrap-->    <link      rel=\"stylesheet \"      href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css \"      integrity=\"sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z \"      crossorigin=\"anonymous \"    />    <title>Página Clientes</title>  </head>  <body>      <h1>Listado de Clientes</h1>"
+        // Agregar la tabla con headers
+        htmlClientes += "<table class=\"table-striped\"> <tr>  <th>ID</th>  <th>Nombre compañía</th>  <th>Nombre contacto</th></tr>"
+        // Agregar datos de tabla
+        for (let i = 0; i < jsonClientes.length; i++) {
+            // Agrega una fila a la tabla
+            htmlClientes += "<tr>"
+
+            let filaActual = jsonClientes[i];
+            // Agrega idcliente
+            htmlClientes += "<td>" + filaActual.idcliente + "</td>";
+            // Agrega nombrecompania
+            htmlClientes += "<td>" + filaActual.nombrecompania + "</td>";
+            // Agrega nombrecontacto
+            htmlClientes += "<td>" + filaActual.nombrecontacto + "</td>";
+
+            // Cierra el tag de fila
+            htmlClientes += "</tr>";
+        }
+        // Cierra tag de tabla, body y html
+        htmlClientes += "</table></body></html>";
+
+        fs.writeFile('./clientes.html', htmlClientes, err => {
+
+        })
+
     })
     .catch(function (error) {
         console.warn(error);
@@ -54,7 +80,8 @@ axios.get(urlProveedores)
             // Cierra el tag de fila
             htmlProveedores += "</tr>";
         }
-
+        // Cierra tag de tabla, body y html
+        htmlProveedores += "</table></body></html>";
 
         fs.writeFile('./proveedores.html', htmlProveedores, err => {
 
